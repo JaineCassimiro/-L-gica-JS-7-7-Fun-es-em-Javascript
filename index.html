@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Científica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora Científica</h1>
+        <button id="toggle-mode">🌙</button>
+    </header>
+    <section class="calculator">
+        <input type="text" class="display" id="display" disabled>
+        <div id="history"></div>
+        <div class="buttons">
+            <button class="clear-btn" onclick="clearDisplay()">C</button>
+            <button class="basic-btn" onclick="appendValue('/')">/</button>
+            <button class="basic-btn" onclick="appendValue('*')">*</button>
+            <button class="basic-btn" onclick="appendValue('-')">-</button>
+            <button class="basic-btn" onclick="appendValue('+')">+</button>
+            <button class="basic-btn" onclick="appendValue('%')">%</button>
+            <button class="basic-btn" onclick="appendValue('7')">7</button>
+            <button class="basic-btn" onclick="appendValue('8')">8</button>
+            <button class="basic-btn" onclick="appendValue('9')">9</button>
+            <button class="basic-btn" onclick="appendValue('4')">4</button>
+            <button class="basic-btn" onclick="appendValue('5')">5</button>
+            <button class="basic-btn" onclick="appendValue('6')">6</button>
+            <button class="equal" onclick="calculateResult()">=</button>
+            <button class="basic-btn" onclick="appendValue('1')">1</button>
+            <button class="basic-btn" onclick="appendValue('2')">2</button>
+            <button class="basic-btn" onclick="appendValue('3')">3</button>
+            <button class="basic-btn" onclick="appendValue('0')" style="grid-column: span 2;">0</button>
+            <button class="basic-btn" onclick="appendValue('.')">.</button>
+            <button class="scientific-btn" onclick="appendValue('Math.sin(')">sin</button>
+            <button class="scientific-btn" onclick="appendValue('Math.cos(')">cos</button>
+            <button class="scientific-btn" onclick="appendValue('Math.tan(')">tan</button>
+            <button class="scientific-btn" onclick="appendValue('Math.log(')">log</button>
+            <button class="scientific-btn" onclick="appendValue('Math.sqrt(')">√</button>
+            <button class="scientific-btn" onclick="appendValue('Math.pow(,')">xⁿ</button>
+            <button class="algebra-btn" onclick="appendValue('Math.abs(')">|x|</button>
+            <button class="algebra-btn" onclick="appendValue('Math.floor(')">⌊x⌋</button>
+            <button class="algebra-btn" onclick="appendValue('Math.ceil(')">⌈x⌉</button>
+            <button class="algebra-btn" onclick="appendValue('Math.exp(')">e^x</button>
+            <button class="algebra-btn" onclick="appendValue('Math.PI')">π</button>
+        </div>
+    </section>
+    <footer>
+        <p>Desenvolvido por Jaine</p>
+    </footer>
+    <script>
+        document.getElementById("toggle-mode").addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+        });
+        
+        function appendValue(value) {
+            document.getElementById("display").value += value;
+        }
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+        function calculateResult() {
+            try {
+                let expression = document.getElementById("display").value;
+                let result = eval(expression);
+                document.getElementById("display").value = result;
+                document.getElementById("history").innerHTML += `<p>${expression} = ${result}</p>`;
+            } catch {
+                document.getElementById("display").value = "Erro";
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
